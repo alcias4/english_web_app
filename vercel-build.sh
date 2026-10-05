@@ -2,26 +2,25 @@
 
 set -e
 
-echo "=== Using Vercel Rust installation ==="
-
-source /rust/env
+# Vercel ya trae Rust en esta imagen
 export PATH="/rust/bin:$PATH"
 
-echo "=== Rust versions ==="
+echo "Rust:"
 rustc --version
 cargo --version
-rustup --version
 
-echo "=== Installing WebAssembly target ==="
-rustup target add wasm32-unknown-unknown
+echo "Installing cargo-binstall..."
+curl -L --proto '=https' --tlsv1.2 -sSf \
+https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh \
+| bash
 
-echo "=== Installing Dioxus CLI ==="
-curl -fsSL https://dioxus.dev/install.sh | bash
+export PATH="$HOME/.cargo/bin:/rust/bin:$PATH"
 
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:/rust/bin:$PATH"
+echo "Installing Dioxus CLI..."
+cargo binstall dioxus-cli -y --force
 
-echo "=== Dioxus version ==="
+echo "Dioxus:"
 dx --version
 
-echo "=== Building Dioxus Web ==="
+echo "Building..."
 dx bundle --web --release --out-dir dist
