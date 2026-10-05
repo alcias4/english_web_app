@@ -2,21 +2,30 @@
 
 set -e
 
-# Instalar Rust
-curl --proto '=https' \
-    --tlsv1.2 \
-    -sSf https://sh.rustup.rs \
-    | sh -s -- -y --profile minimal
+echo "=== Using Vercel Rust installation ==="
 
-source "$HOME/.cargo/env"
+# Vercel ya tiene Rust instalado aquí
+source /rust/env
+export PATH="/rust/bin:$PATH"
 
-# Target WebAssembly
+echo "=== Rust versions ==="
+rustc --version
+cargo --version
+rustup --version
+
+echo "=== Installing WebAssembly target ==="
 rustup target add wasm32-unknown-unknown
 
-# Instalar Dioxus CLI
-curl -sSL https://dioxus.dev/install.sh | bash
+echo "=== Installing Dioxus CLI ==="
+curl -fsSL https://dioxus.dev/install.sh | bash
 
-export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+# El instalador de Dioxus puede colocar dx en un directorio del usuario
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:/rust/bin:$PATH"
 
-# Compilar Dioxus Web
+echo "=== Dioxus version ==="
+dx --version
+
+echo "=== Building Dioxus Web ==="
 dx bundle --web --release --out-dir dist
+
+echo "=== Build finished ==="
