@@ -33,7 +33,7 @@ fn Home() -> Element {
 
         if let Some(verb) = data_n.read().verbs.values().find(|verb| verb.id == *count.read()) {
             div {
-                class: "flex flex-col gap-4",
+                class: "flex flex-col gap-4 bg-black p-4",
                 h2 {
                     class: "flex gap-4",
                     "English: {verb.verb}"
@@ -45,7 +45,7 @@ fn Home() -> Element {
                 }
 
                 p {
-                    class: "text-center",
+                    class: "",
                     "Translate: {verb.spanish_translation.join(\", \")}"
                 }
 
@@ -53,16 +53,17 @@ fn Home() -> Element {
                     "{verb.core_idea_definition}"
                 }
 
-                section {
-                    class: "flex flex-row-reverse w-full justify-between" ,
-                    button {
-                        class: "cursor-pointer",
-                        onclick:move |_| count += 1 ,"Next", }
-                    button {
-                        class: "cursor-pointer",
-                        onclick:move |_| { if *count.read()> 1 {count -= 1} } ,"Before", }
-                }
             }
+        }
+
+        section {
+            class: "flex flex-row-reverse w-full justify-between" ,
+            button {
+                class: "cursor-pointer",
+                onclick:move |_| count += 1 ,"Next", }
+            button {
+                class: "cursor-pointer",
+                onclick:move |_| { if *count.read()> 1 {count -= 1} } ,"Before", }
         }
 
     }
