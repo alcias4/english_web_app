@@ -24,7 +24,7 @@ fn App() -> Element {
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         document::Link { rel: "stylesheet", href: OWN_CSS }
 
-        main { class: "flex flex-col w-full items-center p-4 sm:p-4 sm:w-[650px] gap-5 relative",
+        main { class: "flex flex-col w-full items-center p-4 sm:p-4 sm:w-[600px] gap-5 relative",
             Home {}
         }
 

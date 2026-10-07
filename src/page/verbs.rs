@@ -24,6 +24,7 @@ pub fn Verbs(data_verbs: Signal<VerbDatabase>, count: Signal<u32>) -> Element {
 
             MainVerbInfo { verb: verb.clone(), length, percentage: percentages() }
             ContextVerb { verb: verb.clone() }
+
             SoundBox { verb: verb.clone() }
             WorthBox { verb }
         }
@@ -51,8 +52,8 @@ fn ButtonVerbs(count: Signal<u32> , number: u32, length: u32,percentages: Signal
 
                     if count() < 500 {
                         count += 1;
-                        let per = (number as f32 * 100.0) / length as f32;
-                        percentages.set(per);
+                        let per = (number as f32 * 100.0) * 500.0;
+                        percentages.set(per as f32);
                     }
 
                 },
@@ -64,7 +65,7 @@ fn ButtonVerbs(count: Signal<u32> , number: u32, length: u32,percentages: Signal
                 onclick: move |_| {
                     if count() > 1 {
                         count -= 1;
-                        let per = (number as f32 * 100.0) / length as f32;
+                        let per = (number as f32 * 100.0) / 500 as f32;
                         percentages.set(per);
 
                     }
@@ -364,13 +365,13 @@ fn MainVerbInfo(
 
                     span {
                         class: " bg-[#875aee] h-[2px]",
-                        style: "width: {percentage}%;",
+                        style: "width: {percentage/5.0}%;",
                     }
                 }
 
                 h3 { class: "text-[#595b64] mt-6", "Let's make it click." }
 
-                h2 { class: "text-[60px] font-bold flex items-center gap-4",
+                h2 { class: "text-[3.4rem] font-bold flex items-center gap-4",
 
                     "{verb.verb}"
 

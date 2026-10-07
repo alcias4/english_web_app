@@ -462,6 +462,9 @@
   .text-center {
     text-align: center;
   }
+  .text-\[3\.4rem\] {
+    font-size: 3.4rem;
+  }
   .text-\[12px\] {
     font-size: 12px;
   }
@@ -482,9 +485,6 @@
   }
   .text-\[40px\] {
     font-size: 40px;
-  }
-  .text-\[60px\] {
-    font-size: 60px;
   }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
@@ -599,9 +599,9 @@
       }
     }
   }
-  .sm\:w-\[650px\] {
+  .sm\:w-\[600px\] {
     @media (width >= 40rem) {
-      width: 650px;
+      width: 600px;
     }
   }
   .sm\:p-4 {
