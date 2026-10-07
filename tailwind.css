@@ -2,8 +2,8 @@
 
 
 .button {
-    @apply cursor-pointer bg-[#8B5CF6] p-4 w-[150px] rounded-xl
-           transition-transform duration-300 ease-in-out;
+    @apply cursor-pointer bg-[#8B5CF6] p-4 w-[50%] rounded-xl
+           transition-transform duration-300 ease-in-out font-bold;
 }
 
 .button:hover {
