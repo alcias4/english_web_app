@@ -360,10 +360,10 @@ fn MainVerbInfo(
                     span { "{verb.id}/{length} verbs" }
                 }
 
-                div { class: "w-full h-[2px] bg-[#595b64] mt-4",
+                div { class: " flex w-full h-[2px] bg-[#595b64] mt-4",
 
                     span {
-                        class: "block bg-[#875aee] h-[2px]",
+                        class: " bg-[#875aee] h-[2px]",
                         style: "width: {percentage}%;",
                     }
                 }
